@@ -9,8 +9,8 @@
 ## FUNCTIONS
 ## Customer
 - customer will signup and login into system
-- customer can make request for service of their vehicle by providing details (vehicle number, problem description)
-- After Request approved by admin customer can check cost of service
+- customer can make request for service of their vehicle by providing details (vehicle number, model, problem description etc.)
+- After Request approved by admin, customer can check cost, status of service
 - customer can delete request (Enquiry) if customer change their mind or not approved by admin (ONLY PENDING REQUEST CAN BE DELETED )
 - customer can check status of Request(Enquiry) that is Pending, Approved, Repairing, Repairing Done, Released
 - customer can check invoice details or repaired vehicles
