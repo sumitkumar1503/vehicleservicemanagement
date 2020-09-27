@@ -23,7 +23,7 @@
                   <th>Vehicle Number</th>
                   <th>Problem Description</th>
                   <th>Approve</th>
-                  <th>Delete</th>
+                  
                 </tr>
 							</thead>
 							<tbody>
@@ -34,8 +34,7 @@
                   <td>{{r.vehicle_no}}</td>
                   <td>{{r.problem_description}}</td>
                   <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'approve-request' r.id  %}">&#10004;</a></td>
-                  <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-request' r.id  %}">&#10008;</a></td>
-                </tr>
+                    </tr>
                 {% endfor %}
 
 							</tbody>

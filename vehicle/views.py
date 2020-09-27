@@ -390,11 +390,6 @@ def approve_request_view(request,pk):
     return render(request,'vehicle/admin_approve_request_details.html',{'adminenquiry':adminenquiry})
 
 
-@login_required(login_url='adminlogin')
-def delete_request_view(request,pk):
-    requests=models.Request.objects.get(id=pk)
-    requests.delete()
-    return redirect('admin-approve-request')
 
 
 @login_required(login_url='adminlogin')

@@ -42,7 +42,7 @@ urlpatterns = [
     path('admin-add-request',views.admin_add_request_view,name='admin-add-request'),
     path('admin-approve-request',views.admin_approve_request_view,name='admin-approve-request'),
     path('approve-request/<int:pk>', views.approve_request_view,name='approve-request'),
-    path('delete-request/<int:pk>', views.delete_request_view,name='delete-request'),
+    
     path('admin-view-service-cost',views.admin_view_service_cost_view,name='admin-view-service-cost'),
     path('update-cost/<int:pk>', views.update_cost_view,name='update-cost'),
 
