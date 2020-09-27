@@ -1,0 +1,50 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+{% load static %}
+	<!-- main content -->
+	<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >Customers
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Profile Picture</th>
+                  <th>Mobile</th>
+                  <th>Address</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+							</thead>
+							<tbody>
+              {% for c in customers %}
+                <tr>
+                  <td> {{c.get_name}}</td>
+                  <td> <img src="{% static c.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+                  <td>{{c.mobile}}</td>
+                  <td>{{c.address}}</td>
+                  <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'update-customer' c.id  %}">&#9998;</a></td>
+                  <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-customer' c.id  %}">&#10008;</a></td>
+                </tr>
+                {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}

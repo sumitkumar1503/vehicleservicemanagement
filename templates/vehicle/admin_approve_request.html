@@ -1,0 +1,51 @@
+{% extends 'vehicle/adminbase.html' %}
+{% block content %}
+
+	<!-- main content -->
+	<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >
+							Approve Enquiry Made By Customer
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Vehicle Name</th>
+                  <th>Vehicle Category</th>
+                  <th>Vehicle Number</th>
+                  <th>Problem Description</th>
+                  <th>Approve</th>
+                  <th>Delete</th>
+                </tr>
+							</thead>
+							<tbody>
+                {% for r in enquiry %}
+                <tr>
+                  <td> {{r.vehicle_name}}</td>
+                  <td>{{r.category}}</td>
+                  <td>{{r.vehicle_no}}</td>
+                  <td>{{r.problem_description}}</td>
+                  <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'approve-request' r.id  %}">&#10004;</a></td>
+                  <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-request' r.id  %}">&#10008;</a></td>
+                </tr>
+                {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}

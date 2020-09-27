@@ -1,0 +1,52 @@
+{% extends 'vehicle/customerbase.html' %}
+{% block content %}
+
+	<!-- main content -->
+	<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >Approved Request Invoice
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Vehicle Name</th>
+
+                  <th>Vehicle Number</th>
+
+                  <th>Enquiry Date</th>
+                  <th>Status</th>
+                  <th>Cost</th>
+                </tr>
+							</thead>
+							<tbody>
+                {% for enq in enquiries %}
+                <tr>
+                  <td>{{enq.vehicle_name}}</td>
+
+                  <td>{{enq.vehicle_no}}</td>
+
+                  <td>{{enq.date}}</td>
+                  <td>{{enq.status}}</td>
+                  <td>{{enq.cost}}</td>
+                  </tr>
+                {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}

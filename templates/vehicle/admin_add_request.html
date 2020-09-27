@@ -1,0 +1,80 @@
+{% extends 'vehicle/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+  <style media="screen">
+    input[type=text], select,input[type=number] , textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+
+  </style>
+
+
+</head>
+
+
+
+<br><br><br><br><br>
+<h1 style="text-align:center;">MAKE REQUEST</h1>
+<div>
+  <form method="post" style="margin-left:200px;margin-right:200px;">
+      {% csrf_token %}
+    <label for="category">Vehicle Category</label>
+    {% render_field enquiry.category class="form-control"  %}<br>
+
+    <label for="vehicle_no">Vehicle Number</label>
+    {% render_field enquiry.vehicle_no class="form-control" placeholder="Vehicle Number" %}
+
+    <label for="vehicle_name">Vehicle Name</label>
+    {% render_field enquiry.vehicle_name class="form-control" placeholder="Vehicle Name" %}
+
+    <label for="vehicle_brand">Vehicle Brand</label>
+    {% render_field enquiry.vehicle_brand class="form-control" placeholder="Vehicle Brand" %}
+
+    <label for="vehicle_model">Vehicle Model</label>
+    {% render_field enquiry.vehicle_model class="form-control" placeholder="Vehicle Model" %}
+
+    <label for="problem_description">Problem Description</label>
+    {% render_field enquiry.problem_description class="form-control" placeholder="Problem Description" %}
+
+    <label for="cost">Repair Cost</label>
+    {% render_field adminenquiry.cost class="form-control" placeholder="Repair Cost" %}
+
+    <label for="customer">Customer</label>
+    {% render_field adminenquiry.customer class="form-control"  %}
+
+    <label for="mechanic">Mechanic</label>
+    {% render_field adminenquiry.mechanic class="form-control"  %}
+
+
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

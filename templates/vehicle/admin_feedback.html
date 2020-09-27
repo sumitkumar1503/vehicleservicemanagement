@@ -1,0 +1,47 @@
+{% extends 'vehicle/adminbase.html' %}
+
+{% block content %}
+
+
+<head>
+  <style media="screen">
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+<br><br><br><br><br>
+<div style="text-align:center;color:blue;">
+  <h2>Feedback Sent By Customer / Mechanic</h2>
+</div><br>
+{%for f in feedback%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>{{f.date}} ||By :{{f.by}} </strong><br> {{f.message}}
+</div>
+<br>
+{%endfor%}
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}
