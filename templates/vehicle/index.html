@@ -23,10 +23,25 @@
 <body>
   {% include "vehicle/navbar.html" %}
   <br><br>
+
   <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
-<br><br><br><br><br><br><br><br><br><br>
+  <marquee behavior="scroll" direction="left">
+   <img src="{% static "images/ferrari.png" %}" width="120" height="80" alt="ferrari" />
+    <img src="{% static "images/ford.png" %}" width="120" height="80" alt="ford" />
+   <img src="{% static "images/lambo.png" %}" width="120" height="80" alt="lambo" />
+   <img src="{% static "images/mahindra.png" %}" width="120" height="80" alt="mahindra" />
+   <img src="{% static "images/tvs.png" %}" width="120" height="80" alt="tvs" />
+   <img src="{% static "images/tata.png" %}" width="120" height="80" alt="tata" />
+   <img src="{% static "images/hero.png" %}" width="120" height="80" alt="hero" />
+   <img src="{% static "images/rolls.png" %}" width="120" height="80" alt="rolls" />
+   <img src="{% static "images/suzuki.png" %}" width="120" height="80" alt="suzuki" />
+ </marquee>
+  <br><br>
+
+  {% include "vehicle/customer_mechanic_cards.html" %}
+<br><br><br><br><br>
   {% include "vehicle/footer.html" %}
 </body>
 
