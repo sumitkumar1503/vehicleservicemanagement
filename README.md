@@ -35,6 +35,7 @@ py manage.py createsuperuser
 - Give username, email, password and your admin account will be created.
 - After login , admin can see how many customer, mechanic, recent service orders on dashboard
 - Admin can see/add/update/delete customers
+- Admin can see each customer invoice (if two request made by same customer it will show total sum of both request)
 - Admin can see/add/update/delete mechanics
 - Admin can approve(hire) mechanics (requested by mechanic) based on their skills
 - Admin can see/update mechanic salary
