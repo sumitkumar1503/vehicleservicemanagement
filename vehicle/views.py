@@ -628,7 +628,7 @@ def mechanic_feedback_view(request):
 @user_passes_test(is_mechanic)
 def mechanic_salary_view(request):
     mechanic=models.Mechanic.objects.get(user_id=request.user.id)
-    workdone=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Repairing Done')
+    workdone=models.Request.objects.all().filter(mechanic_id=mechanic.id).filter(Q(status="Repairing Done") | Q(status="Released"))
     return render(request,'vehicle/mechanic_salary.html',{'workdone':workdone,'mechanic':mechanic})
 
 @login_required(login_url='mechaniclogin')
