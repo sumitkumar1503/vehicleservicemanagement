@@ -57,6 +57,9 @@ urlpatterns = [
     path('admin-view-mechanic-salary',views.admin_view_mechanic_salary_view,name='admin-view-mechanic-salary'),
     path('update-salary/<int:pk>', views.update_salary_view,name='update-salary'),
 
+    path('admin-mechanic-attendance', views.admin_mechanic_attendance_view,name='admin-mechanic-attendance'),
+    path('admin-take-attendance', views.admin_take_attendance_view,name='admin-take-attendance'),
+    path('admin-view-attendance', views.admin_view_attendance_view,name='admin-view-attendance'),
     path('admin-feedback', views.admin_feedback_view,name='admin-feedback'),
 
 
@@ -67,6 +70,8 @@ urlpatterns = [
     path('mechanic-salary', views.mechanic_salary_view,name='mechanic-salary'),
     path('mechanic-profile', views.mechanic_profile_view,name='mechanic-profile'),
     path('edit-mechanic-profile', views.edit_mechanic_profile_view,name='edit-mechanic-profile'),
+
+    path('mechanic-attendance', views.mechanic_attendance_view,name='mechanic-attendance'),
 
 
 

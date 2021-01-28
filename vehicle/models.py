@@ -55,7 +55,10 @@ class Request(models.Model):
     def __str__(self):
         return self.problem_description
 
-
+class Attendance(models.Model):
+    mechanic=models.ForeignKey('Mechanic',on_delete=models.CASCADE,null=True)
+    date=models.DateField()
+    present_status = models.CharField(max_length=10)
 
 class Feedback(models.Model):
     date=models.DateField(auto_now=True)

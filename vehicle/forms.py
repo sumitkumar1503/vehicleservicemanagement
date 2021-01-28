@@ -45,11 +45,11 @@ class AdminRequestForm(forms.Form):
     #to_field_name value will be stored when form is submitted.....__str__ method of customer model will be shown there in html
     customer=forms.ModelChoiceField(queryset=models.Customer.objects.all(),empty_label="Customer Name",to_field_name='id')
     mechanic=forms.ModelChoiceField(queryset=models.Mechanic.objects.all(),empty_label="Mechanic Name",to_field_name='id')
-    cost=forms.IntegerField();
+    cost=forms.IntegerField()
 
 class AdminApproveRequestForm(forms.Form):
     mechanic=forms.ModelChoiceField(queryset=models.Mechanic.objects.all(),empty_label="Mechanic Name",to_field_name='id')
-    cost=forms.IntegerField();
+    cost=forms.IntegerField()
     stat=(('Pending','Pending'),('Approved','Approved'),('Released','Released'))
     status=forms.ChoiceField( choices=stat)
 
@@ -68,6 +68,15 @@ class FeedbackForm(forms.ModelForm):
         widgets = {
         'message':forms.Textarea(attrs={'rows': 6, 'cols': 30})
         }
+
+#for Attendance related form
+presence_choices=(('Present','Present'),('Absent','Absent'))
+class AttendanceForm(forms.Form):
+    present_status=forms.ChoiceField( choices=presence_choices)
+    date=forms.DateField()
+
+class AskDateForm(forms.Form):
+    date=forms.DateField()
 
 
 #for contact us page

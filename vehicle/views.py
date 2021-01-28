@@ -417,6 +417,55 @@ def update_cost_view(request,pk):
         return HttpResponseRedirect('/admin-view-service-cost')
     return render(request,'vehicle/update_cost.html',{'updateCostForm':updateCostForm})
 
+
+
+@login_required(login_url='adminlogin')
+def admin_mechanic_attendance_view(request):
+    return render(request,'vehicle/admin_mechanic_attendance.html')
+
+
+@login_required(login_url='adminlogin')
+def admin_take_attendance_view(request):
+    mechanics=models.Mechanic.objects.all().filter(status=True)
+    aform=forms.AttendanceForm()
+    if request.method=='POST':
+        form=forms.AttendanceForm(request.POST)
+        if form.is_valid():
+            Attendances=request.POST.getlist('present_status')
+            date=form.cleaned_data['date']
+            for i in range(len(Attendances)):
+                AttendanceModel=models.Attendance()
+                
+                AttendanceModel.date=date
+                AttendanceModel.present_status=Attendances[i]
+                print(mechanics[i].id)
+                print(int(mechanics[i].id))
+                mechanic=models.Mechanic.objects.get(id=int(mechanics[i].id))
+                AttendanceModel.mechanic=mechanic
+                AttendanceModel.save()
+            return redirect('admin-view-attendance')
+        else:
+            print('form invalid')
+    return render(request,'vehicle/admin_take_attendance.html',{'mechanics':mechanics,'aform':aform})
+
+def admin_view_attendance_view(request):
+    form=forms.AskDateForm()
+    if request.method=='POST':
+        form=forms.AskDateForm(request.POST)
+        if form.is_valid():
+            date=form.cleaned_data['date']
+            attendancedata=models.Attendance.objects.all().filter(date=date)
+            mechanicdata=models.Mechanic.objects.all().filter(status=True)
+            mylist=zip(attendancedata,mechanicdata)
+            return render(request,'vehicle/admin_view_attendance_page.html',{'mylist':mylist,'date':date})
+        else:
+            print('form invalid')
+    return render(request,'vehicle/admin_view_attendance_ask_date.html',{'form':form})
+
+
+
+
+
 @login_required(login_url='adminlogin')
 def admin_feedback_view(request):
     feedback=models.Feedback.objects.all().order_by('-id')
@@ -608,6 +657,16 @@ def mechanic_update_status_view(request,pk):
             print("form is invalid")
         return HttpResponseRedirect('/mechanic-work-assigned')
     return render(request,'vehicle/mechanic_update_status.html',{'updateStatus':updateStatus,'mechanic':mechanic})
+
+@login_required(login_url='mechaniclogin')
+@user_passes_test(is_mechanic)
+def mechanic_attendance_view(request):
+    mechanic=models.Mechanic.objects.get(user_id=request.user.id)
+    attendaces=models.Attendance.objects.all().filter(mechanic=mechanic)
+    return render(request,'vehicle/mechanic_view_attendance.html',{'attendaces':attendaces,'mechanic':mechanic})
+
+
+
 
 
 @login_required(login_url='mechaniclogin')
