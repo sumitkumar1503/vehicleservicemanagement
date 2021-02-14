@@ -90,7 +90,7 @@ https://myaccount.google.com/lesssecureapps
 ## Drawbacks/LoopHoles
 - When customer/mechanic edit their profile then he/she must login again because their username/password is updated in db.
 ## Credits
-- Tran Anh Tuah ( Admin Dashboard UI )
+- Tran Anh Tuat ( Admin Dashboard UI )
 ## Disclaimer
 This project is developed for demo purpose and it's not supposed to be used in real application.
 
