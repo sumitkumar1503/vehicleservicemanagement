@@ -62,6 +62,7 @@ urlpatterns = [
     path('admin-view-attendance', views.admin_view_attendance_view,name='admin-view-attendance'),
     path('admin-feedback', views.admin_feedback_view,name='admin-feedback'),
 
+    path('admin-report', views.admin_report_view,name='admin-report'),
 
     path('mechanic-dashboard', views.mechanic_dashboard_view,name='mechanic-dashboard'),
     path('mechanic-work-assigned', views.mechanic_work_assigned_view,name='mechanic-work-assigned'),

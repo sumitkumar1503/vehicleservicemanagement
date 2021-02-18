@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
+from django.db.models import Q
 
 def home_view(request):
     if request.user.is_authenticated:
@@ -448,6 +449,7 @@ def admin_take_attendance_view(request):
             print('form invalid')
     return render(request,'vehicle/admin_take_attendance.html',{'mechanics':mechanics,'aform':aform})
 
+@login_required(login_url='adminlogin')
 def admin_view_attendance_view(request):
     form=forms.AskDateForm()
     if request.method=='POST':
@@ -462,8 +464,13 @@ def admin_view_attendance_view(request):
             print('form invalid')
     return render(request,'vehicle/admin_view_attendance_ask_date.html',{'form':form})
 
-
-
+@login_required(login_url='adminlogin')
+def admin_report_view(request):
+    reports=models.Request.objects.all().filter(Q(status="Repairing Done") | Q(status="Released"))
+    dict={
+        'reports':reports,
+    }
+    return render(request,'vehicle/admin_report.html',context=dict)
 
 
 @login_required(login_url='adminlogin')
@@ -479,7 +486,7 @@ def admin_feedback_view(request):
 #============================================================================================
 # CUSTOMER RELATED views start
 #============================================================================================
-from django.db.models import Q
+
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def customer_dashboard_view(request):
